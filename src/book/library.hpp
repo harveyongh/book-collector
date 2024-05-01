@@ -7,7 +7,6 @@ struct BookLibrary{
     std::string name;// Holds name of file to write to later
     std::vector<Book> books;
 
-    void setName(std::string newName);
     void addBook(Book newBook);
     void deleteBook(Book);
     std::string getFilename();
