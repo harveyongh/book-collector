@@ -11,7 +11,12 @@ struct Book {
     Book parseBook(std::string csvLine);
     Book newBook();
 
-    Book arrayToBook(std::string valueArray[4]);
+    void arrayToBook(std::string valueArray[4]){
+        title = valueArray[0];
+        authorLast = valueArray[1];
+        authorFirst = valueArray[2];
+        publishYear = valueArray[3];
+    }
 };
 
 
