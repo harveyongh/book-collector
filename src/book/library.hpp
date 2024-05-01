@@ -9,7 +9,6 @@ struct BookLibrary{
 
     void addBook(Book newBook);
     void deleteBook(Book);
-    std::string getFilename();
     std::vector<Book> sort(int option);
     std::vector<Book> filter(int option, std::string filterStr);
 };
