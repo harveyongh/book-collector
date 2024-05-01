@@ -1,4 +1,5 @@
 #include "book.hpp"
+#include <iostream>
 
 Book parseBook(std::string csvLine)
 {
@@ -10,9 +11,30 @@ Book parseBook(std::string csvLine)
         int currentSeparation = workingString.find(",");
         splitArray[i] = workingString.substr(0, currentSeparation);
         if (i < 3){
-            workingString.erase(0, currentSeparation);
+            workingString.erase(0, (currentSeparation + 1));
         }
     }
     parsedBook.arrayToBook(splitArray);
     return parsedBook;
+}
+
+Book newBook()
+{
+    using std::cout;
+    using std::cin;
+    std::string newBookArray[4];
+
+    cout << "Enter book title: ";
+    cin >> newBookArray[0];
+    cout << "Enter author last, first name: ";
+    std::string author;
+    cin >> author;
+    newBookArray[1] = author.substr(0, author.find(","));
+    newBookArray[2] = author.substr((author.find(",") + 2), author.length());
+    cout << "Enter publishing year: ";
+    cin >> newBookArray[3];
+
+    Book newBook;
+    newBook.arrayToBook(newBookArray);
+    return newBook;
 }
