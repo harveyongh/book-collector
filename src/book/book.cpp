@@ -17,7 +17,7 @@ void Book::parseBook(std::string csvLine)
     parsedBook.arrayToBook(splitArray);
 }
 
-Book Book::newBook()
+void Book::newBook()
 {
     using std::cout;
     using std::cin;
@@ -33,9 +33,8 @@ Book Book::newBook()
     cout << "Enter publishing year: ";
     cin >> newBookArray[3];
 
-    Book newBook;
-    newBook.arrayToBook(newBookArray);
-    return newBook;
+    title = newBookArray[0]; authorLast = newBookArray[1];
+    authorFirst = newBookArray[2]; publishYear = newBookArray[3];
 }
 
 void Book::printBook()

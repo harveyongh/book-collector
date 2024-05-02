@@ -10,7 +10,7 @@ struct Book {
 
     void parseBook(std::string csvLine);
     void printBook();
-    Book newBook();
+    void newBook();
 
     void arrayToBook(std::string valueArray[4]){
         title = valueArray[0];
