@@ -9,6 +9,7 @@ struct BookLibrary{
 
     void addBook(Book newBook);
     void deleteBook(Book);
+    void printLibrary();
     std::vector<Book> sort(std::string option);
     std::vector<Book> filter(std::string option, std::string filterStr);
 };

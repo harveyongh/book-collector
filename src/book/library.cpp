@@ -2,6 +2,7 @@
 #include "book.hpp"
 #include <algorithm>
 #include <vector>
+#include <iostream>
 
 void BookLibrary::addBook(Book newBook)
 {
@@ -64,4 +65,12 @@ std::vector<Book> BookLibrary::filter(std::string option, std::string filterStr)
         return titleVector;
     }
     return books;
+}
+
+void BookLibrary::printLibrary()
+{
+    for (auto book : books){
+        book.printBook();
+        std::cout << std::endl;
+    }
 }
