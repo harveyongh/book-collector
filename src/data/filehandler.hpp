@@ -1,9 +1,9 @@
 #ifndef FILEHANDLER_H_
 #define FILEHANDLER_H_
-#include <fstream>
 #include <string>
+#include "../book/library.hpp"
 
-// createLibrary function to read and build library object
-// writeLibrary function to write library obj to file
+BookLibrary createLibrary(std::string fileName);
+void writeLibrary(BookLibrary* workingLibrary);
 
 #endif // FILEHANDLER_H_
