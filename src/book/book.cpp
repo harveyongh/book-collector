@@ -1,4 +1,5 @@
 #include "book.hpp"
+#include <cstdio>
 #include <iostream>
 #include <sstream>
 #include <string>
@@ -25,18 +26,19 @@ void Book::parseBook(std::string csvLine)
 void Book::newBook()
 {
     using std::cout;
-    using std::cin;
+    using std::getline;
     std::string newBookArray[4];
 
-    cout << "Enter book title: ";
-    cin >> newBookArray[0];
-    cout << "Enter author last, first name: ";
-    std::string author;
-    cin >> author;
-    newBookArray[1] = author.substr(0, author.find(","));
-    newBookArray[2] = author.substr((author.find(",") + 1), author.length());
-    cout << "Enter publishing year: ";
-    cin >> newBookArray[3];
+    std::cin.ignore();// clear existing characters in buffer
+    printf("Enter book title: ");
+    getline(std::cin, newBookArray[0]);
+    printf("Enter author last name, first:");
+    std::string authorName;
+    getline(std::cin, authorName);
+    newBookArray[1] = authorName.substr(0, authorName.find(","));
+    newBookArray[2] = authorName.substr((authorName.find(",") + 1), authorName.length());
+    printf("Enter publishing year:");
+    getline(std::cin, newBookArray[3]);
 
     title = newBookArray[0]; authorLast = newBookArray[1];
     authorFirst = newBookArray[2]; publishYear = newBookArray[3];
