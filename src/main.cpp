@@ -25,6 +25,7 @@ int main()
                 std::cout << "Please enter filename: ";
                 std::cin >> fileName;
                 currLibrary = createLibrary(fileName);
+                libraryOpenFlag = true;
                 break;
             case 'a':
                 newBook.newBook();
@@ -46,6 +47,7 @@ int main()
                 writeLibrary(&currLibrary);
                 currLibrary.books.clear();
                 currLibrary.name = "";
+                libraryOpenFlag = false;
                 break;
         }
         std::cout << "Enter menu option: ";
