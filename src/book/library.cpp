@@ -10,8 +10,15 @@ void BookLibrary::addBook(Book newBook)
 
 void BookLibrary::deleteBook(Book delBook)
 {
-    auto delIter = std::find(books.begin(), books.end(), delBook);
-    books.erase(delIter);
+    //auto delIter = std::find(books.begin(), books.end(), delBook);
+    int delLoc = 0;
+    for (auto item : books){
+        if (item.title == delBook.title && item.authorLast == delBook.authorLast){
+            break;
+        }
+        delLoc++;
+    }
+    books.erase(books.begin() + delLoc);
 }
 
 std::vector<Book> BookLibrary::sort(std::string option)
