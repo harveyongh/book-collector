@@ -1,4 +1,5 @@
 #include "library.hpp"
+#include "book.hpp"
 #include <algorithm>
 #include <vector>
 
@@ -13,7 +14,7 @@ void BookLibrary::deleteBook(Book delBook)
     books.erase(delIter);
 }
 
-std::vector<Book> BookLibrary::sort(int option)
+std::vector<Book> BookLibrary::sort(std::string option)
 {
     int length = books.size();
     // iterate to create array[length] of all book values to sort
@@ -34,4 +35,26 @@ std::vector<Book> BookLibrary::sort(int option)
         }
     }
     return sortedLibrary;
+}
+
+std::vector<Book> BookLibrary::filter(std::string option, std::string filterStr)
+{
+    if (option == "name"){
+        std::vector<Book> authorVector;
+        for (auto item : books){
+            if (item.authorLast == filterStr){
+                authorVector.push_back(item);
+            }
+        }
+        return authorVector;
+    } else if (option == "title"){
+        std::vector<Book> titleVector;
+        for (auto item : books){
+            if (item.title.find(filterStr) != std::string::npos){
+                titleVector.push_back(item);
+            }
+        }
+        return titleVector;
+    }
+    return books;
 }
