@@ -9,9 +9,9 @@ void Book::parseBook(std::string csvLine)
 
     for (int i = 0; i < 4; i++){
         int currentSeparation = workingString.find(",");
-        splitArray[i] = workingString.substr(0, currentSeparation);
+        splitArray[i] = workingString.substr(0, (currentSeparation + 1));
         if (i < 3){
-            workingString.erase(0, (currentSeparation + 1));
+            workingString.erase(workingString.begin() + currentSeparation);
         }
     }
     parsedBook.arrayToBook(splitArray);
