@@ -8,7 +8,7 @@ struct Book {
     std::string authorFirst;
     std::string publishYear;
 
-    Book parseBook(std::string csvLine);
+    void parseBook(std::string csvLine);
     Book newBook();
 
     void arrayToBook(std::string valueArray[4]){

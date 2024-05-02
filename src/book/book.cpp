@@ -1,7 +1,7 @@
 #include "book.hpp"
 #include <iostream>
 
-Book parseBook(std::string csvLine)
+void Book::parseBook(std::string csvLine)
 {
     Book parsedBook;
     std::string workingString = csvLine;
@@ -15,10 +15,9 @@ Book parseBook(std::string csvLine)
         }
     }
     parsedBook.arrayToBook(splitArray);
-    return parsedBook;
 }
 
-Book newBook()
+Book Book::newBook()
 {
     using std::cout;
     using std::cin;
