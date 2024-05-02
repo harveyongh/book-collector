@@ -14,10 +14,17 @@ BookLibrary createLibrary(std::string fileName)
         parsedBook.parseBook(currLine);
         fileLibrary.addBook(parsedBook);
     }
+    fileInput.close();
     return fileLibrary;
 }
 
 void writeLibrary(BookLibrary *workingLibrary)
 {
-    //
+    std::ofstream fileOutput (workingLibrary->name);
+
+    for (auto book : workingLibrary->books){
+        fileOutput << book.title << "," << book.authorLast << ","
+            << book.authorFirst << "," << book.publishYear << "\n";
+    }
+    fileOutput.close();
 }
