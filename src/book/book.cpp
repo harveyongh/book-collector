@@ -30,7 +30,7 @@ Book newBook()
     std::string author;
     cin >> author;
     newBookArray[1] = author.substr(0, author.find(","));
-    newBookArray[2] = author.substr((author.find(",") + 2), author.length());
+    newBookArray[2] = author.substr((author.find(",") + 1), author.length());
     cout << "Enter publishing year: ";
     cin >> newBookArray[3];
 
