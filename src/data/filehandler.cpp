@@ -21,7 +21,7 @@ BookLibrary createLibrary(std::string fileName)
 void writeLibrary(BookLibrary *workingLibrary)
 {
     std::ofstream fileOutput (workingLibrary->name);
-
+    fileOutput << "title,authorLast,authorFirst,publishYear\n";
     for (auto book : workingLibrary->books){
         fileOutput << book.title << "," << book.authorLast << ","
             << book.authorFirst << "," << book.publishYear << "\n";
