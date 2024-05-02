@@ -37,3 +37,10 @@ Book Book::newBook()
     newBook.arrayToBook(newBookArray);
     return newBook;
 }
+
+void Book::printBook()
+{
+    using std::cout;
+    cout << authorLast << ", " << authorFirst << std::endl;
+    cout << publishYear << " " << title << std::endl;
+}
