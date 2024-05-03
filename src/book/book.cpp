@@ -36,7 +36,7 @@ void Book::newBook()
     std::string authorName;
     getline(std::cin, authorName);
     newBookArray[1] = authorName.substr(0, authorName.find(","));
-    newBookArray[2] = authorName.substr((authorName.find(",") + 1), authorName.length());
+    newBookArray[2] = authorName.substr((authorName.find(",") + 2), authorName.length());
     printf("Enter publishing year:");
     getline(std::cin, newBookArray[3]);
 
