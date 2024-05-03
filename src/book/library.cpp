@@ -24,23 +24,25 @@ void BookLibrary::deleteBook(Book delBook)
 
 std::vector<Book> BookLibrary::sort(std::string option)
 {
-    int length = books.size();
     // iterate to create array[length] of all book values to sort
-    std::string sortArray[length];
-    int i = 0;
+    std::vector<std::string> sortVector;
     for (auto item: books){
-        sortArray[i] = item.authorLast;// for the moment, will only sort by name
-        i++;
+        sortVector.push_back(item.authorLast);// for the moment, will only sort by name
     }
-    std::sort(sortArray, sortArray + length);
+    std::sort(sortVector.begin(), sortVector.end());
     // iterate through sorted array and push the first occurrence to output vector
     std::vector<Book> sortedLibrary;
-    for (auto arrayItem : sortArray){
+    std::string prevValue = "";
+    for (auto vectorItem : sortVector){
+        if (vectorItem == prevValue){
+            continue;
+        }
         for (auto libraryItem : books){
-            if (libraryItem.authorLast == arrayItem){
+            if (libraryItem.authorLast == vectorItem){
                 sortedLibrary.push_back(libraryItem);
             }
         }
+        prevValue = vectorItem;
     }
     return sortedLibrary;
 }
