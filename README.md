@@ -6,7 +6,7 @@ This repo contains a very simple program for managing a text-based book collecti
 * When prompted with entry format (e.g. Last, First), be sure to follow that format including spaces.
 
 ## Building
-To build this project locally on linux, I have included the necessary CMakeLists.txt file that handles most tasks for you. The only things required are Git, a C++ compiler like G++, and Cmake.
+To build this project locally on linux, I have included the necessary CMakeLists.txt file that handles most tasks for you. The only things required are Git, a C++ compiler like G++ and its libraries, and Cmake.
 
 ``` sh
 git clone https://github.com/harveyongh/book-collector.git
