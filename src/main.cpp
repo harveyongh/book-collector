@@ -5,6 +5,7 @@
 #include <iostream>
 #include <string.h>
 
+Book newBook();
 void mainMenu(bool);
 int main()
 {
@@ -15,7 +16,7 @@ int main()
     char option;
     // while loop to continue prompting for input while active
     while (option != 'e'){
-        Book newBook;
+        Book blankBook;
         Book deleteBook;
         BookLibrary queryLibrary;
         std::string filterOpt = "name"; std::string filter;
@@ -30,8 +31,8 @@ int main()
                 libraryOpenFlag = true;
                 break;
             case 'a':
-                newBook.newBook();
-                currLibrary.addBook(newBook);
+                blankBook = newBook();
+                currLibrary.addBook(blankBook);
                 break;
             case 'd':
                 std::cin.ignore();// Ignore prev input for getline()
@@ -82,4 +83,24 @@ void mainMenu(bool flag)
             "c) Save and close library file\n";
     }
     cout << "e) Exit the program\n";
+}
+
+Book newBook()
+{
+    using std::cout;
+    using std::getline;
+    std::string newBookArray[4];
+
+    std::cin.ignore();// clear existing characters in buffer
+    printf("Enter book title: ");
+    getline(std::cin, newBookArray[0]);
+    printf("Enter author last name, first:");
+    std::string authorName;
+    getline(std::cin, authorName);
+    newBookArray[1] = authorName.substr(0, authorName.find(","));
+    newBookArray[2] = authorName.substr((authorName.find(",") + 2), authorName.length());
+    printf("Enter publishing year:");
+    getline(std::cin, newBookArray[3]);
+
+    return Book(newBookArray);
 }
