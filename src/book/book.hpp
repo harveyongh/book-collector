@@ -8,10 +8,14 @@ struct Book {
     std::string authorFirst;
     std::string publishYear;
 
-    void parseBook(std::string csvLine);
+    Book(){};
+    Book(std::string bookArray[4]);
+    Book(std::string csvLine);
+
     void printBook();
     void newBook();
 
+    //Reworking arrayToBook
     void arrayToBook(std::string valueArray[4]){
         title = valueArray[0];
         authorLast = valueArray[1];

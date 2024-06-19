@@ -9,9 +9,9 @@ BookLibrary createLibrary(std::string fileName)
     fileLibrary.name = fileName;
 
     getline(fileInput, currLine);// Discard column labels
+
     while (getline(fileInput, currLine)){
-        Book parsedBook;
-        parsedBook.parseBook(currLine);
+        Book parsedBook(currLine);
         fileLibrary.addBook(parsedBook);
     }
     fileInput.close();

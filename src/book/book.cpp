@@ -4,10 +4,8 @@
 #include <sstream>
 #include <string>
 
-void Book::parseBook(std::string csvLine)
+Book::Book(std::string csvLine)
 {
-    Book parsedBook;
-    std::string workingString = csvLine;
     std::string splitArray[4];
     std::string currData;
 
@@ -20,7 +18,6 @@ void Book::parseBook(std::string csvLine)
 
     title = splitArray[0]; authorLast = splitArray[1];
     authorFirst = splitArray[2]; publishYear = splitArray[3];
-    //parsedBook.arrayToBook(splitArray);
 }
 
 void Book::newBook()
