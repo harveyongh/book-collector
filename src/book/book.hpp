@@ -13,15 +13,6 @@ struct Book {
     Book(std::string csvLine);
 
     void printBook();
-    void newBook();
-
-    //Reworking arrayToBook
-    void arrayToBook(std::string valueArray[4]){
-        title = valueArray[0];
-        authorLast = valueArray[1];
-        authorFirst = valueArray[2];
-        publishYear = valueArray[3];
-    }
 };
 
 
