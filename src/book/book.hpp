@@ -12,6 +12,7 @@ struct Book {
     Book(std::string bookArray[4]);
     Book(std::string csvLine);
 
+    void setFromArray(std::string bookArray[4]);
     void printBook();
 };
 
