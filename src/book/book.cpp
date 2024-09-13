@@ -6,31 +6,34 @@
 
 Book::Book(std::string csvLine)
 {
-    std::string splitArray[4];
     std::string currData;
-
     std::stringstream ss(csvLine);
-    int i = 0;
-    while (std::getline(ss, currData, ',')){
-        splitArray[i] = currData;
-        i++;
-    }
+    std::string bookArray[4];
 
-    title = splitArray[0]; authorLast = splitArray[1];
-    authorFirst = splitArray[2]; publishYear = splitArray[3];
+    for (int i = 0; i < 4; i++)
+    {
+        std::getline(ss, currData, ',');
+        bookArray[i] = currData;
+    }
+    setFromArray(bookArray);
 }
 
 Book::Book(std::string bookArray[4])
 {
-    title = bookArray[0]; authorLast = bookArray[1];
-    authorFirst = bookArray[2]; publishYear = bookArray[3];
+    setFromArray(bookArray);
 }
-
-
 
 void Book::printBook()
 {
     using std::cout;
     cout << authorLast << ", " << authorFirst << std::endl;
     cout << publishYear << " " << title << std::endl;
+}
+
+void Book::setFromArray(std::string bookArray[4])
+{
+    title = bookArray[0];
+    authorLast = bookArray[1];
+    authorFirst = bookArray[2];
+    publishYear = bookArray[3];
 }
