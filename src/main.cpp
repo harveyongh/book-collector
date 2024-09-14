@@ -7,19 +7,66 @@
 
 Book newBook();
 void mainMenu(bool);
+void mainLoop();
+
 int main()
+{
+    mainLoop();
+
+    return 0;
+}
+
+void mainMenu(bool flag)
+{
+    using std::cout;
+    cout << "Book Collector Main Menu:\n"
+        "m) Show main menu\n"
+        "o) Open a library file\n";
+    if (flag){
+        cout << "a) Add a book to the library\n"
+            "d) Delete a book from the library\n"
+            "s) Sort the library by author\n"
+            "f) Filter the library by title or author\n"
+            "c) Save and close library file\n";
+    }
+    cout << "e) Exit the program\n";
+}
+
+Book newBook()
+{
+    using std::cout;
+    using std::getline;
+    std::string newBookArray[4];
+
+    std::cin.ignore();// clear existing characters in buffer
+    printf("Enter book title: ");
+    getline(std::cin, newBookArray[0]);
+    printf("Enter author last name, first:");
+    std::string authorName;
+    getline(std::cin, authorName);
+    newBookArray[1] = authorName.substr(0, authorName.find(","));
+    newBookArray[2] = authorName.substr((authorName.find(",") + 2), authorName.length());
+    printf("Enter publishing year:");
+    getline(std::cin, newBookArray[3]);
+
+    return Book(newBookArray);
+}
+
+void mainLoop()
 {
     bool libraryOpenFlag = false;
     BookLibrary currLibrary;
     std::string fileName;
+    char option = ' ';
+
     mainMenu(libraryOpenFlag);
-    char option;
-    // while loop to continue prompting for input while active
+
     while (option != 'e'){
         Book blankBook;
         Book deleteBook;
         BookLibrary queryLibrary;
         std::string filterOpt = "name"; std::string filter;
+
         switch (option) {
             case 'm':
                 mainMenu(libraryOpenFlag);
@@ -65,42 +112,4 @@ int main()
         std::cin >> option;
         std::cout << std::endl;
     }
-
-    return 0;
-}
-
-void mainMenu(bool flag)
-{
-    using std::cout;
-    cout << "Book Collector Main Menu:\n"
-        "m) Show main menu\n"
-        "o) Open a library file\n";
-    if (flag){
-        cout << "a) Add a book to the library\n"
-            "d) Delete a book from the library\n"
-            "s) Sort the library by author\n"
-            "f) Filter the library by title or author\n"
-            "c) Save and close library file\n";
-    }
-    cout << "e) Exit the program\n";
-}
-
-Book newBook()
-{
-    using std::cout;
-    using std::getline;
-    std::string newBookArray[4];
-
-    std::cin.ignore();// clear existing characters in buffer
-    printf("Enter book title: ");
-    getline(std::cin, newBookArray[0]);
-    printf("Enter author last name, first:");
-    std::string authorName;
-    getline(std::cin, authorName);
-    newBookArray[1] = authorName.substr(0, authorName.find(","));
-    newBookArray[2] = authorName.substr((authorName.find(",") + 2), authorName.length());
-    printf("Enter publishing year:");
-    getline(std::cin, newBookArray[3]);
-
-    return Book(newBookArray);
 }
