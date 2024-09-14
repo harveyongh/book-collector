@@ -101,8 +101,10 @@ void mainLoop()
                 queryLibrary.books = currLibrary.filter(filterOpt, filter);
                 queryLibrary.printLibrary();
                 break;
-            case 'c':
+            case 'w':
                 writeLibrary(&currLibrary);
+                break;
+            case 'c':
                 currLibrary.books.clear();
                 currLibrary.name = "";
                 libraryOpenFlag = false;
