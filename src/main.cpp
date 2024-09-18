@@ -1,4 +1,5 @@
 #include "book.hpp"
+#include "curses.hpp"
 #include "library.hpp"
 #include "filehandler.hpp"
 #include <cstdio>
