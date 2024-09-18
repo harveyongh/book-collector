@@ -3,9 +3,6 @@
 #include <panel.h>
 
 // TODO Functions
-// 1. Init curses
-// 2. Create panels/windows
-// 3. Write menu to left panel
 // 4. Loop print library results to right panel & accept up/down input to scroll
 // 5. Destroy panels/windows and kill curses session
 // 6. Resize windows
@@ -38,4 +35,25 @@ WINDOW *createWindow(int lines, int cols, int y, int x)
     wrefresh(localWindow);
 
     return localWindow;
+}
+
+void printMenu(WINDOW *menuWindow, bool libraryOpenFlag)
+{
+    mvwprintw(menuWindow, 2, 2, "Menu Options:");
+    mvwprintw(menuWindow, 3, 2, "--------------------------------");
+    mvwprintw(menuWindow, 4, 2, "(o)pen a library file");
+    if (libraryOpenFlag)
+    {
+        mvwprintw(menuWindow, 5, 2, "(a)dd a book to the library");
+        mvwprintw(menuWindow, 6, 2, "(d)elete a book from the library");
+        mvwprintw(menuWindow, 7, 2, "(s)ort the library by author");
+        mvwprintw(menuWindow, 8, 2, "(f)ilter the library");
+        mvwprintw(menuWindow, 9, 2, "(w)rite library to file");
+        mvwprintw(menuWindow, 10, 2, "(c)lose the library file");
+        mvwprintw(menuWindow, 11, 2, "(e)xit the program");
+    }
+    else
+    {
+        mvwprintw(menuWindow, 5, 2, "(e)xit the program");
+    }
 }

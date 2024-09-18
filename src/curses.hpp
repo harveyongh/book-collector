@@ -7,4 +7,6 @@
 void initCurses(PANEL *panelArray, WINDOW *windowArray);
 WINDOW *createWindow(int lines, int cols, int y, int x);
 
+void printMenu(WINDOW *menuWindow);
+
 #endif // CURSES_HPP
