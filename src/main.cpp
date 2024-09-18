@@ -1,6 +1,6 @@
-#include "book/book.hpp"
-#include "book/library.hpp"
-#include "data/filehandler.hpp"
+#include "book.hpp"
+#include "library.hpp"
+#include "filehandler.hpp"
 #include <cstdio>
 #include <iostream>
 #include <string.h>
