@@ -30,7 +30,6 @@ void initCurses(PANEL *panelArray[2], WINDOW *windowArray[2])
 void endCurses(PANEL *panelArray[2], WINDOW *windowArray[2])
 {
     delwin(windowArray[0]); delwin(windowArray[1]);
-    del_panel(panelArray[0]); del_panel(panelArray[1]);
 
     endwin();
 }
