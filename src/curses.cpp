@@ -2,11 +2,6 @@
 #include <curses.h>
 #include <panel.h>
 
-// TODO Functions
-// 4. Loop print library results to right panel & accept up/down input to scroll
-// 5. Destroy panels/windows and kill curses session
-// 6. Resize windows
-
 void initCurses(PANEL *panelArray[2], WINDOW *windowArray[2])
 {
     initscr(); // Start curses session

@@ -1,0 +1,18 @@
+#+title: Todo
+
+TODO
+- [ ] CURSES.CPP Function to print book to window at specific offset
+  - [ ] first book starts at 2:2, each book printed at line 2+3n
+- [ ] CURSES.CPP Function to resize and reset the windows
+  - [ ] main function should catch KEY_RESIZE
+  - [ ] main function passes window array to resize func
+  - [ ] curses resize function checks screen size and resizes windows
+- [ ] LIBRARY.CPP Function to create a "view"
+  - [ ] create an n length range of books
+  - [ ] return the array to be output
+  - [ ] main function should pass each book to the printbook curses function
+- [ ] MAIN.CPP Main loop and "view" loop functions
+  - [ ] rewrite main loop func to handle menu
+  - [ ] "view" loop controls library view scrolling
+- [ ] CURSES.CPP dialog function to request string input from user
+- [ ] CURSES.CPP function to print dialog to dialog box and set cursor loc
