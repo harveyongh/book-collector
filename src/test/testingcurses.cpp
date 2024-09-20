@@ -1,4 +1,5 @@
 #include "../curses.hpp"
+#include <curses.h>
 #include <panel.h>
 #include <string>
 
@@ -22,6 +23,11 @@ int main(int argc, char **argv)
     wmove(windowArray[1], 2, 2);
     wprintw(windowArray[1], "%s", response);
 
+    update_panels();
+    doupdate();
+    getch();
+
+    printMenu(windowArray[0], false);
     update_panels();
     doupdate();
     getch();
