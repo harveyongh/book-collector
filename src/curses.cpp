@@ -45,6 +45,8 @@ WINDOW *createWindow(int lines, int cols, int y, int x)
 // SHOULD BE USED ON WINDOW [0]
 void printMenu(WINDOW *menuWindow, bool libraryOpenFlag)
 {
+    resetWindow(menuWindow);
+
     mvwprintw(menuWindow, 2, 2, "Menu Options:");
     mvwprintw(menuWindow, 3, 2, "--------------------------------");
     mvwprintw(menuWindow, 4, 2, "(o)pen a library file");
