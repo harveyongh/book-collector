@@ -14,5 +14,10 @@ TODO
 - [ ] MAIN.CPP Main loop and "view" loop functions
   - [ ] rewrite main loop func to handle menu
   - [ ] "view" loop controls library view scrolling
-- [ ] CURSES.CPP dialog function to request string input from user
-- [ ] CURSES.CPP function to print dialog to dialog box and set cursor loc
+- [X] CURSES.CPP dialog function to request string input from user
+- [X] CURSES.CPP function to print dialog to dialog box and set cursor loc
+
+MAYBE
+- [ ] Support for other file types
+- [ ] Better filtering
+- [ ] Better sorting
