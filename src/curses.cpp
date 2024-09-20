@@ -1,6 +1,7 @@
 #include "curses.hpp"
 #include <curses.h>
 #include <panel.h>
+#include <string.h>
 
 void initCurses(PANEL *panelArray[2], WINDOW *windowArray[2])
 {
@@ -29,6 +30,7 @@ void endCurses(PANEL *panelArray[2], WINDOW *windowArray[2])
     endwin();
 }
 
+// Helper function creates the standard window with given attributes
 WINDOW *createWindow(int lines, int cols, int y, int x)
 {
     WINDOW *localWindow = newwin(lines, cols, y, x);
@@ -39,6 +41,8 @@ WINDOW *createWindow(int lines, int cols, int y, int x)
     return localWindow;
 }
 
+// Prints the standard menu to the given window
+// SHOULD BE USED ON WINDOW [0]
 void printMenu(WINDOW *menuWindow, bool libraryOpenFlag)
 {
     mvwprintw(menuWindow, 2, 2, "Menu Options:");
@@ -58,4 +62,26 @@ void printMenu(WINDOW *menuWindow, bool libraryOpenFlag)
     {
         mvwprintw(menuWindow, 5, 2, "(e)xit the program");
     }
+}
+
+// dialogPrompt() takes a prompt given by the MENU to print to window
+// and a character array to hold the response
+// This function can theoretically take a char array of any size
+// but obviously some sizes will be less useful for user input
+void dialogPrompt(WINDOW *menuWindow, std::string prompt, char* response, int size)
+{
+    const char *charPrompt = prompt.c_str();
+
+    resetWindow(menuWindow);
+
+    mvwprintw(menuWindow, 5, 2, "%s", charPrompt);
+    wmove(menuWindow, 6, 2);
+    wgetnstr(menuWindow, response, size);
+}
+
+void resetWindow(WINDOW *window)
+{
+    wclear(window);
+    box(window, 0, 0);
+    wrefresh(window);
 }
