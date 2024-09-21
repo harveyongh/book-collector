@@ -1,8 +1,8 @@
 #+title: Todo
 
 TODO
-- [ ] CURSES.CPP Function to print book to window at specific offset
-  - [ ] first book starts at 2:2, each book printed at line 2+3n
+- [X] CURSES.CPP Function to print book to window at specific offset
+  - [X] first book starts at 2:2, each book printed at line 2+3n
 - [ ] CURSES.CPP Function to resize and reset the windows
   - [ ] main function should catch KEY_RESIZE
   - [ ] main function passes window array to resize func
