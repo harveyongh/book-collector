@@ -4,12 +4,13 @@
 #include "filehandler.hpp"
 
 #include <cstdio> // TO REMOVE
+#include <curses.h>
 #include <iostream> // TO REMOVE
+#include <panel.h>
 #include <string.h>
 
 Book newBook(WINDOW *window);
-void mainMenu(bool);
-void mainLoop();
+void mainLoop(WINDOW *windowArray[2]);
 
 int main()
 {
@@ -17,7 +18,7 @@ int main()
     PANEL *panelArray[2];
     initCurses(panelArray, windowArray);
 
-    mainLoop();
+    mainLoop(windowArray);
 
     endCurses(panelArray, windowArray);
     return 0;
@@ -40,66 +41,54 @@ Book newBook(WINDOW *window)
     return Book(bookArray);
 }
 
-void mainLoop()
+void mainLoop(WINDOW *windowArray[2])
 {
     bool libraryOpenFlag = false;
     BookLibrary currLibrary;
     std::string fileName;
-    char option = ' ';
-
-    mainMenu(libraryOpenFlag);
+    std::vector<Book> currView;
+    int option = 0;
 
     while (option != 'e'){
-        Book blankBook;
-        Book deleteBook;
-        BookLibrary queryLibrary;
-        std::string filterOpt = "name"; std::string filter;
+        printMenu(windowArray[0], libraryOpenFlag);
+        update_panels();
+        doupdate();
+        noecho();
+        option = getch();
 
-        switch (option) {
-            case 'm':
-                mainMenu(libraryOpenFlag);
-                break;
-            case 'o':
-                std::cout << "Please enter filename: ";
-                std::cin >> fileName;
-                currLibrary = createLibrary(fileName);
-                libraryOpenFlag = true;
-                break;
-            case 'a':
-                blankBook = newBook();
-                currLibrary.addBook(blankBook);
-                break;
-            case 'd':
-                std::cin.ignore();// Ignore prev input for getline()
-                std::cout << "Please enter book title: ";
-                getline(std::cin, deleteBook.title);
-                std::cout << "Please enter author last name: ";
-                getline(std::cin, deleteBook.authorLast);
-                currLibrary.deleteBook(deleteBook);
-                break;
-            case 's':
-                queryLibrary.books = currLibrary.sort("");
-                queryLibrary.printLibrary();
-                break;
-            case 'f':
-                std::cout << "Please enter filter option, name/title: ";
-                std::cin >> filterOpt;
-                std::cout << "Please enter filter: ";
-                std::cin >> filter;
-                queryLibrary.books = currLibrary.filter(filterOpt, filter);
-                queryLibrary.printLibrary();
-                break;
-            case 'w':
-                writeLibrary(&currLibrary);
-                break;
-            case 'c':
-                currLibrary.books.clear();
-                currLibrary.name = "";
-                libraryOpenFlag = false;
-                break;
+        if (option == KEY_RESIZE)
+        {
+            resizeWindows(windowArray);
         }
-        std::cout << "Enter menu option: ";
-        std::cin >> option;
-        std::cout << std::endl;
+        else if (option == 'o')
+        {
+            echo();
+            fileName = dialogPrompt(windowArray[0], "Enter the filename");
+            currLibrary = createLibrary(fileName);
+            libraryOpenFlag = true;
+        }
+        else if (libraryOpenFlag)
+        {
+            switch (option) {
+                case 'w':
+                    writeLibrary(&currLibrary);
+                    break;
+                case 'c':
+                    libraryOpenFlag = false;
+                    break;
+                case 'a':
+                    // TODO
+                    break;
+                case 'd':
+                    // TODO
+                    break;
+                case 's':
+                    // TODO
+                    break;
+                case 'f':
+                    // TODO
+                    break;
+            }
+        }
     }
 }
