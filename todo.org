@@ -3,10 +3,11 @@
 TODO
 - [X] CURSES.CPP Function to print book to window at specific offset
   - [X] first book starts at 2:2, each book printed at line 2+3n
-- [ ] CURSES.CPP Function to resize and reset the windows
+- [-] CURSES.CPP Function to resize and reset the windows
   - [ ] main function should catch KEY_RESIZE
   - [ ] main function passes window array to resize func
-  - [ ] curses resize function checks screen size and resizes windows
+  - [ ] main function should also somehow hold the state of the screen
+  - [X] curses resize function checks screen size and resizes windows
 - [ ] LIBRARY.CPP Function to create a "view"
   - [ ] take an offset arg to specify starting point of the view window
   - [ ] create an n length range of books
