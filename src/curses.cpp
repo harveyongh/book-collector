@@ -1,4 +1,6 @@
+#include "book.hpp"
 #include "curses.hpp"
+
 #include <curses.h>
 #include <panel.h>
 #include <string.h>
@@ -79,6 +81,14 @@ void dialogPrompt(WINDOW *menuWindow, std::string prompt, char* response, int si
     mvwprintw(menuWindow, 5, 2, "%s", charPrompt);
     wmove(menuWindow, 6, 2);
     wgetnstr(menuWindow, response, size);
+}
+
+void printBook(WINDOW *window, Book book, int offset)
+{
+    int location = (offset * 3) + 2;
+    mvwprintw(window, location, 2, "%s, %s %s", book.authorLast.c_str(),
+              book.authorFirst.c_str(), book.publishYear.c_str());
+    mvwprintw(window, location+1, 4, "%s", book.title.c_str());
 }
 
 void resetWindow(WINDOW *window)
