@@ -12,7 +12,7 @@ WINDOW *createWindow(int lines, int cols, int y, int x);
 void endCurses(PANEL *panelArray[2], WINDOW *windowArray[2]);
 
 void printMenu(WINDOW *menuWindow, bool libraryOpenFlag);
-void dialogPrompt(WINDOW *menuWindow, std::string prompt, char *response, int size);
+std::string dialogPrompt(WINDOW *menuWindow, std::string prompt);
 void printBook(WINDOW *window, Book book, int offset);
 
 void resizeWindows(WINDOW *windowArray[2]);
