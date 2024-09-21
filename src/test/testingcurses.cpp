@@ -3,6 +3,8 @@
 #include <panel.h>
 #include <string>
 
+void updateHelper();
+
 int main(int argc, char **argv)
 {
     WINDOW *windowArray[2];
@@ -11,28 +13,28 @@ int main(int argc, char **argv)
     initCurses(panelArray, windowArray);
 
     printMenu(windowArray[0], true);
-    update_panels();
-    doupdate();
-
+    updateHelper();
     getch(); // pause running
 
-    char response[32];
-    std::string prompt = "This is the prompt";
-
-    dialogPrompt(windowArray[0], prompt, response, 32);
-    wmove(windowArray[1], 2, 2);
-    wprintw(windowArray[1], "%s", response);
-
-    update_panels();
-    doupdate();
+    std::string bookArray[4] = {"testbook", "testlast", "testfirst", "1999"};
+    Book book(bookArray);
+    printBook(windowArray[1], book, 0);
+    updateHelper();
     getch();
 
-    printMenu(windowArray[0], false);
-    update_panels();
-    doupdate();
+    printBook(windowArray[1], book, 1);
+    updateHelper();
+    getch();
+
     getch();
 
     endCurses(panelArray, windowArray);
 
     return 0;
+}
+
+void updateHelper()
+{
+    update_panels();
+    doupdate();
 }

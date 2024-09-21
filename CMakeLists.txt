@@ -16,6 +16,6 @@ target_link_libraries(book.collector ${CURSES_LIBRARIES} panel)
 
 if( TESTING )
   message("Testing files are being built")
-  add_executable(testing.curses src/test/testingcurses.cpp src/curses.cpp)
+  add_executable(testing.curses src/test/testingcurses.cpp src/curses.cpp src/book.cpp)
   target_link_libraries(testing.curses ${CURSES_LIBRARIES} panel)
   endif()
