@@ -22,10 +22,7 @@ int main(int argc, char **argv)
     updateHelper();
     getch();
 
-    printBook(windowArray[1], book, 1);
-    updateHelper();
-    getch();
-
+    resizeWindows(windowArray);
     getch();
 
     endCurses(panelArray, windowArray);
