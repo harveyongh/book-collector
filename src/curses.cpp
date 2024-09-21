@@ -68,10 +68,10 @@ void printMenu(WINDOW *menuWindow, bool libraryOpenFlag)
     }
 }
 
-// dialogPrompt() takes a prompt given by the MENU to print to window
-// and a character array to hold the response
-// This function can theoretically take a char array of any size
-// but obviously some sizes will be less useful for user input
+/* dialogPrompt() takes a prompt given by the MENU to print to window
+ * and a character array to hold the response
+ * This function can theoretically take a char array of any size
+ * but obviously some sizes will be less useful for user input */
 void dialogPrompt(WINDOW *menuWindow, std::string prompt, char* response, int size)
 {
     const char *charPrompt = prompt.c_str();
@@ -83,6 +83,9 @@ void dialogPrompt(WINDOW *menuWindow, std::string prompt, char* response, int si
     wgetnstr(menuWindow, response, size);
 }
 
+/* printBook() takes the window, a book, and an "offset" argument
+ * this offset decides where the book's information is printed on the window
+ * where each book is given 2 lines of text and a following break */
 void printBook(WINDOW *window, Book book, int offset)
 {
     int location = (offset * 3) + 2;

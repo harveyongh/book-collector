@@ -8,9 +8,11 @@ TODO
   - [ ] main function passes window array to resize func
   - [ ] curses resize function checks screen size and resizes windows
 - [ ] LIBRARY.CPP Function to create a "view"
+  - [ ] take an offset arg to specify starting point of the view window
   - [ ] create an n length range of books
   - [ ] return the array to be output
   - [ ] main function should pass each book to the printbook curses function
+  - [ ] main function manages an offset var which is also passed to the view func
 - [ ] MAIN.CPP Main loop and "view" loop functions
   - [ ] rewrite main loop func to handle menu
   - [ ] "view" loop controls library view scrolling
