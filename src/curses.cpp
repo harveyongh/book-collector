@@ -94,6 +94,23 @@ void printBook(WINDOW *window, Book book, int offset)
     mvwprintw(window, location+1, 4, "%s", book.title.c_str());
 }
 
+void resizeWindows(WINDOW *windowArray[2])
+{
+    refresh(); //refresh stdscr after resize
+
+    int lines; int cols;
+    getmaxyx(stdscr, lines, cols);
+    cols /= 3;
+
+    wresize(windowArray[0], lines, cols);
+    mvwin(windowArray[0], 0, 0);
+    wresize(windowArray[1], lines, cols*2);
+    mvwin(windowArray[1], 0, cols);
+
+    resetWindow(windowArray[0]);
+    resetWindow(windowArray[1]);
+}
+
 void resetWindow(WINDOW *window)
 {
     wclear(window);

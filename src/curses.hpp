@@ -15,6 +15,7 @@ void printMenu(WINDOW *menuWindow, bool libraryOpenFlag);
 void dialogPrompt(WINDOW *menuWindow, std::string prompt, char *response, int size);
 void printBook(WINDOW *window, Book book, int offset);
 
+void resizeWindows(WINDOW *windowArray[2]);
 void resetWindow(WINDOW *window);
 
 #endif // CURSES_HPP
