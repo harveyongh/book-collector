@@ -13,8 +13,13 @@ void mainLoop();
 
 int main()
 {
+    WINDOW *windowArray[2];
+    PANEL *panelArray[2];
+    initCurses(panelArray, windowArray);
+
     mainLoop();
 
+    endCurses(panelArray, windowArray);
     return 0;
 }
 
