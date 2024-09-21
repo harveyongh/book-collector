@@ -2,11 +2,12 @@
 #include "curses.hpp"
 #include "library.hpp"
 #include "filehandler.hpp"
-#include <cstdio>
-#include <iostream>
+
+#include <cstdio> // TO REMOVE
+#include <iostream> // TO REMOVE
 #include <string.h>
 
-Book newBook();
+Book newBook(WINDOW *window);
 void mainMenu(bool);
 void mainLoop();
 
@@ -17,40 +18,21 @@ int main()
     return 0;
 }
 
-void mainMenu(bool flag)
+Book newBook(WINDOW *window)
 {
-    using std::cout;
-    cout << "Book Collector Main Menu:\n"
-        "m) Show main menu\n"
-        "o) Open a library file\n";
-    if (flag){
-        cout << "a) Add a book to the library\n"
-            "d) Delete a book from the library\n"
-            "s) Sort the library by author\n"
-            "f) Filter the library by title or author\n"
-            "c) Save and close library file\n";
-    }
-    cout << "e) Exit the program\n";
-}
+    std::string bookArray[4];
+    std::string authorName = "";
+    std::string titlePrompt = "Enter the book title";
+    std::string authorPrompt = "Enter the author last, first";
+    std::string yearPrompt = "Enter the publishing year";
 
-Book newBook()
-{
-    using std::cout;
-    using std::getline;
-    std::string newBookArray[4];
+    bookArray[0] = dialogPrompt(window, titlePrompt);
+    authorName = dialogPrompt(window, authorPrompt);
+    bookArray[1] = authorName.substr(0, authorName.find(","));
+    bookArray[2] = authorName.substr((authorName.find(",") + 2), authorName.length());
+    bookArray[3] = dialogPrompt(window, yearPrompt);
 
-    std::cin.ignore();// clear existing characters in buffer
-    printf("Enter book title: ");
-    getline(std::cin, newBookArray[0]);
-    printf("Enter author last name, first:");
-    std::string authorName;
-    getline(std::cin, authorName);
-    newBookArray[1] = authorName.substr(0, authorName.find(","));
-    newBookArray[2] = authorName.substr((authorName.find(",") + 2), authorName.length());
-    printf("Enter publishing year:");
-    getline(std::cin, newBookArray[3]);
-
-    return Book(newBookArray);
+    return Book(bookArray);
 }
 
 void mainLoop()
