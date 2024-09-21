@@ -17,5 +17,6 @@ void printBook(WINDOW *window, Book book, int offset);
 
 void resizeWindows(WINDOW *windowArray[2]);
 void resetWindow(WINDOW *window);
+void resetAllWins(WINDOW *windowArray[2]);
 
 #endif // CURSES_HPP

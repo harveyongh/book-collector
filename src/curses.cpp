@@ -107,8 +107,7 @@ void resizeWindows(WINDOW *windowArray[2])
     wresize(windowArray[1], lines, cols*2);
     mvwin(windowArray[1], 0, cols);
 
-    resetWindow(windowArray[0]);
-    resetWindow(windowArray[1]);
+    resetAllWins(windowArray);
 }
 
 void resetWindow(WINDOW *window)
@@ -116,4 +115,10 @@ void resetWindow(WINDOW *window)
     wclear(window);
     box(window, 0, 0);
     wrefresh(window);
+}
+
+void resetAllWins(WINDOW *windowArray[2])
+{
+    resetWindow(windowArray[0]);
+    resetWindow(windowArray[1]);
 }
