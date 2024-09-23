@@ -60,7 +60,7 @@ void printMenu(WINDOW *menuWindow, bool libraryOpenFlag)
         mvwprintw(menuWindow, 8, 2, "(f)ilter the library");
         mvwprintw(menuWindow, 9, 2, "(w)rite library to file");
         mvwprintw(menuWindow, 10, 2, "(c)lose the library file");
-        mvwprintw(menuWindow, 11, 2, "(e)xit the program");
+        mvwprintw(menuWindow, 11, 2, "(e)xit the program/view");
     }
     else
     {

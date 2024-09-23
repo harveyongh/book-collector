@@ -3,14 +3,13 @@
 #include "library.hpp"
 #include "filehandler.hpp"
 
-#include <cstdio> // TO REMOVE
 #include <curses.h>
-#include <iostream> // TO REMOVE
 #include <panel.h>
 #include <string.h>
 
 void newBook(WINDOW *window, BookLibrary *currLibrary);
 void deleteBook(WINDOW *window, BookLibrary *currLibrary);
+std::vector<Book> filterDialog(WINDOW *window, BookLibrary *currLibrary);
 void mainLoop(WINDOW *windowArray[2]);
 void viewLoop(WINDOW *window, std::vector<Book> *currView);
 
@@ -54,6 +53,17 @@ void deleteBook(WINDOW *window, BookLibrary *currLibrary)
     Book book(bookArray);
 
     currLibrary->deleteBook(book);
+}
+
+std::vector<Book> filterDialog(WINDOW *window, BookLibrary *currLibrary)
+{
+    std::string option = "";
+    std::string filterString = "";
+
+    option = dialogPrompt(window, "Enter filter type, 'title' or 'name'");
+    filterString = dialogPrompt(window, "Enter phrase to filter with");
+
+    return currLibrary->filter(option, filterString);
 }
 
 void mainLoop(WINDOW *windowArray[2])
@@ -104,7 +114,9 @@ void mainLoop(WINDOW *windowArray[2])
                     viewLoop(windowArray[1], &currView);
                     break;
                 case 'f':
-                    // TODO
+                    echo();
+                    currView = filterDialog(windowArray[0], &currLibrary);
+                    viewLoop(windowArray[1], &currView);
                     break;
             }
         }
@@ -116,6 +128,7 @@ void mainLoop(WINDOW *windowArray[2])
 void viewLoop(WINDOW *window, std::vector<Book> *currView)
 {
     keypad(stdscr, TRUE);// Allow mapping of arrow keys
+    noecho();
 
     int lines; int cols;
     getmaxyx(window, lines, cols);
@@ -154,7 +167,7 @@ void viewLoop(WINDOW *window, std::vector<Book> *currView)
 
         motion = getch();
     }
-    while (motion != 'q');
+    while (motion != 'e');
 
     keypad(stdscr, FALSE);
 }
