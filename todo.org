@@ -14,8 +14,8 @@ TODO
   - [X] return the array to be output
   - [X] main function should pass each book to the printbook curses function
   - [X] main function manages an offset var which is also passed to the view func
-- [-] MAIN.CPP Main loop and "view" loop functions
-  - [ ] rewrite main loop func to handle menu
+- [X] MAIN.CPP Main loop and "view" loop functions
+  - [X] rewrite main loop func to handle menu
   - [X] "view" loop controls library view scrolling
 - [X] CURSES.CPP dialog function to request string input from user
 - [X] CURSES.CPP function to print dialog to dialog box and set cursor loc
