@@ -115,7 +115,7 @@ void mainLoop(WINDOW *windowArray[2])
 // takes the window [1] and the specified "view"
 void viewLoop(WINDOW *window, std::vector<Book> *currView)
 {
-    keypad(window, TRUE);// Allow mapping of arrow keys
+    keypad(stdscr, TRUE);// Allow mapping of arrow keys
 
     int lines; int cols;
     getmaxyx(window, lines, cols);
@@ -156,5 +156,5 @@ void viewLoop(WINDOW *window, std::vector<Book> *currView)
     }
     while (motion != 'q');
 
-    keypad(window, FALSE);
+    keypad(stdscr, FALSE);
 }
