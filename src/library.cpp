@@ -22,7 +22,7 @@ void BookLibrary::deleteBook(Book delBook)
     books.erase(books.begin() + delLoc);
 }
 
-std::vector<Book> BookLibrary::sort(std::string option)
+std::vector<Book> BookLibrary::sort()
 {
     // iterate to create array[length] of all book values to sort
     std::vector<std::string> sortVector;
