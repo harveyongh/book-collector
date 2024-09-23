@@ -3,25 +3,25 @@
 TODO
 - [X] CURSES.CPP Function to print book to window at specific offset
   - [X] first book starts at 2:2, each book printed at line 2+3n
-- [-] CURSES.CPP Function to resize and reset the windows
+- [X] CURSES.CPP Function to resize and reset the windows
   - [X] main function should catch KEY_RESIZE
   - [X] main function passes window array to resize func
-  - [ ] main function should also somehow hold the state of the screen
+  - [X] main function should also somehow hold the state of the screen
   - [X] curses resize function checks screen size and resizes windows
-- [ ] LIBRARY.CPP Function to create a "view"
-  - [ ] take an offset arg to specify starting point of the view window
-  - [ ] create an n length range of books
-  - [ ] return the array to be output
-  - [ ] main function should pass each book to the printbook curses function
-  - [ ] main function manages an offset var which is also passed to the view func
-- [ ] MAIN.CPP Main loop and "view" loop functions
+- [X] LIBRARY.CPP Function to create a "view"
+  - [X] take an offset arg to specify starting point of the view window
+  - [X] create an n length range of books
+  - [X] return the array to be output
+  - [X] main function should pass each book to the printbook curses function
+  - [X] main function manages an offset var which is also passed to the view func
+- [-] MAIN.CPP Main loop and "view" loop functions
   - [ ] rewrite main loop func to handle menu
-  - [ ] "view" loop controls library view scrolling
+  - [X] "view" loop controls library view scrolling
 - [X] CURSES.CPP dialog function to request string input from user
 - [X] CURSES.CPP function to print dialog to dialog box and set cursor loc
-- [ ] MAIN.CPP function to loop over book vector and pass to printBook()
-  - [ ] goes inside of main loop switch statement
-  - [ ] takes vector and window pointer args
+- [X] MAIN.CPP function to loop over book vector and pass to printBook()
+  - [X] goes inside of main loop switch statement
+  - [X] takes vector and window pointer args
 
 MAYBE
 - [ ] Support for other file types
