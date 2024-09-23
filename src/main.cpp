@@ -10,6 +10,7 @@
 #include <string.h>
 
 void newBook(WINDOW *window, BookLibrary *currLibrary);
+void deleteBook(WINDOW *window, BookLibrary *currLibrary);
 void mainLoop(WINDOW *windowArray[2]);
 
 int main()
