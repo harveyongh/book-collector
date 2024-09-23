@@ -41,6 +41,19 @@ void newBook(WINDOW *window, BookLibrary *currLibrary)
     currLibrary->addBook(bookArray);
 }
 
+void deleteBook(WINDOW *window, BookLibrary *currLibrary)
+{
+    std::string bookArray[4];
+    std::string authorPrompt = "Enter the author's last name";
+    std::string titlePrompt = "Enter the book title";
+
+    bookArray[0] = dialogPrompt(window, titlePrompt);
+    bookArray[1] = dialogPrompt(window, authorPrompt);
+    Book book(bookArray);
+
+    currLibrary->deleteBook(book);
+}
+
 void mainLoop(WINDOW *windowArray[2])
 {
     bool libraryOpenFlag = false;
@@ -81,7 +94,8 @@ void mainLoop(WINDOW *windowArray[2])
                     newBook(windowArray[0], &currLibrary);
                     break;
                 case 'd':
-                    // TODO
+                    echo();
+                    deleteBook(windowArray[0], &currLibrary);
                     break;
                 case 's':
                     // TODO
