@@ -12,6 +12,7 @@
 void newBook(WINDOW *window, BookLibrary *currLibrary);
 void deleteBook(WINDOW *window, BookLibrary *currLibrary);
 void mainLoop(WINDOW *windowArray[2]);
+void viewLoop(WINDOW *window, std::vector<Book> *currView);
 
 int main()
 {
@@ -99,7 +100,8 @@ void mainLoop(WINDOW *windowArray[2])
                     deleteBook(windowArray[0], &currLibrary);
                     break;
                 case 's':
-                    // TODO
+                    currView = currLibrary.sort();
+                    viewLoop(windowArray[1], &currView);
                     break;
                 case 'f':
                     // TODO
@@ -107,4 +109,52 @@ void mainLoop(WINDOW *windowArray[2])
             }
         }
     }
+}
+
+// viewHandler manages scrolling through a given view of the library
+// takes the window [1] and the specified "view"
+void viewLoop(WINDOW *window, std::vector<Book> *currView)
+{
+    keypad(window, TRUE);// Allow mapping of arrow keys
+
+    int lines; int cols;
+    getmaxyx(window, lines, cols);
+    int bookCount = (lines - 2) / 3;
+    int motion = 0;
+    int windowStart = 0;
+
+    do
+    {
+        resetWindow(window);
+
+        if (motion == KEY_DOWN && windowStart >= currView->size())
+        {
+            windowStart = currView->size() - 1;
+        }
+        else if (motion == KEY_DOWN)
+        {
+            windowStart++;
+        }
+        else if (motion == KEY_UP && windowStart <= 0)
+        {
+            windowStart = 0;
+        }
+        else if (motion == KEY_UP)
+        {
+            windowStart--;
+        }
+
+        for (int i = windowStart, screenLoc = 0; i < currView->size(); i++, screenLoc++)
+        {
+            printBook(window, currView->at(i), screenLoc);
+        }
+
+        update_panels();
+        doupdate();
+
+        motion = getch();
+    }
+    while (motion != 'q');
+
+    keypad(window, FALSE);
 }
