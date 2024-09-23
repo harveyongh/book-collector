@@ -9,7 +9,7 @@
 #include <panel.h>
 #include <string.h>
 
-Book newBook(WINDOW *window);
+void newBook(WINDOW *window, BookLibrary *currLibrary);
 void mainLoop(WINDOW *windowArray[2]);
 
 int main()
@@ -24,7 +24,7 @@ int main()
     return 0;
 }
 
-Book newBook(WINDOW *window)
+void newBook(WINDOW *window, BookLibrary *currLibrary)
 {
     std::string bookArray[4];
     std::string authorName = "";
@@ -38,7 +38,7 @@ Book newBook(WINDOW *window)
     bookArray[2] = authorName.substr((authorName.find(",") + 2), authorName.length());
     bookArray[3] = dialogPrompt(window, yearPrompt);
 
-    return Book(bookArray);
+    currLibrary->addBook(bookArray);
 }
 
 void mainLoop(WINDOW *windowArray[2])
