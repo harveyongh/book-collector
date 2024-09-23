@@ -77,7 +77,8 @@ void mainLoop(WINDOW *windowArray[2])
                     libraryOpenFlag = false;
                     break;
                 case 'a':
-                    // TODO
+                    echo();
+                    newBook(windowArray[0], &currLibrary);
                     break;
                 case 'd':
                     // TODO
