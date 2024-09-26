@@ -26,4 +26,4 @@ TODO
 MAYBE
 - [ ] Support for other file types
 - [ ] Better filtering
-- [ ] Better sorting
+- [X] Better sorting
