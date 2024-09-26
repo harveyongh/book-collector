@@ -37,3 +37,8 @@ void Book::setFromArray(std::string bookArray[4])
     authorFirst = bookArray[2];
     publishYear = bookArray[3];
 }
+
+std::string Book::longAuthor()
+{
+    return authorLast + ", " + authorFirst;
+}

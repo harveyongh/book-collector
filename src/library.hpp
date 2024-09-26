@@ -14,4 +14,6 @@ struct BookLibrary{
     std::vector<Book> filter(std::string option, std::string filterStr);
 };
 
+std::string removeThe(std::string title);
+
 #endif // LIBRARY_H_

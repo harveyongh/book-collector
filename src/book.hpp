@@ -14,6 +14,7 @@ struct Book {
 
     void setFromArray(std::string bookArray[4]);
     void printBook();
+    std::string longAuthor();
 };
 
 
