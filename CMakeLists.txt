@@ -18,4 +18,6 @@ if( TESTING )
   message("Testing files are being built")
   add_executable(testing.curses src/test/testingcurses.cpp src/curses.cpp src/book.cpp)
   target_link_libraries(testing.curses ${CURSES_LIBRARIES} panel)
+
+  add_executable(testing.sort src/test/testingsort.cpp src/book.cpp src/library.cpp)
   endif()
